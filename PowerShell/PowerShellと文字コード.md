@@ -66,7 +66,7 @@ UTF8と思ってたんで…
 
 なので検証してみる。
 `Get-Content .\TXT.txt | Format-Hex`
-![実行結果](.\img/Format-hex.png)
+![実行結果](./img/Format-hex.png)
 
 ### 1.2.3. どうしてこうなった
 
@@ -95,7 +95,7 @@ ASCIIと同じコードは同じコードとなっている。
 `$str | format-hex`
 としてもかわらず。
 
-![$str中身](.\img/moji.png)
+![$str中身](./img/moji.png)
 
 となるのが確認できる。
 
@@ -124,7 +124,7 @@ UTF16は基本16bitで一単位で以下のような対応となる。
 
 なので、
 こうなる。
-![実行結果](.\img/Format-hex.png)
+![実行結果](./img/Format-hex.png)
 
 **⑤これをUTF8のファイルでひらくと…**
 
