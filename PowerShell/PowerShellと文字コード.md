@@ -49,8 +49,8 @@ UTF8だと思ってたらUTF16LEだったりとなかなかこれが把握して
 
 こうなった
 
-> moji
-> m o j i 
+> moji  
+> m o j i  
  
 これには
 UTF8と思ってたんで…
@@ -77,11 +77,11 @@ UTF8と思ってたんで…
 こちらを参考に見ていく。
 [ASCII - Wikipedia](https://ja.wikipedia.org/wiki/ASCII)
 
-ASCII印字可能文字では、
-「m」= 0x6D
-「o」= 0x6F
-「j」= 0x6A
-「i」= 0x69
+ASCII印字可能文字では、  
+「m」= 0x6D  
+「o」= 0x6F  
+「j」= 0x6A  
+「i」= 0x69  
 と割り当てられている
 
 **②UTF8で保存/UTF8でファイルを読み込む**
@@ -111,16 +111,16 @@ ASCIIと同じコードは同じコードとなっている。
 > Out-File -Append リダイレクト演算子 >> は、既存のターゲット ファイルのコンテンツのエンコードとの一致を試みない。 代わりに、Encoding パラメーターを使用しない限り、既定 のエンコード が使用されます。 コンテンツを追加するときに、ファイルの元のエンコードを使用する必要があります。
 > 
 > 原文ママ
-> 出典　about_Character_Encoding
+> 出典　about_Character_Encoding  
 > [https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-7.2](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-7.2)
 
 UTF16は基本16bitで一単位で以下のような対応となる。
 [付録H　Unicode操作文字コード一覧（SORT EE）](http://itdoc.hitachi.co.jp/manuals/3020/30203N73A0/NTSO0551.HTM)
-
-「m」= 0x6D -> 0x6D00
-「o」= 0x6F -> 0x6F00
-「j」= 0x6A -> 0x6A00
-「i」= 0x69 -> 0x6900
+  
+「m」= 0x6D -> 0x6D00  
+「o」= 0x6F -> 0x6F00  
+「j」= 0x6A -> 0x6A00  
+「i」= 0x69 -> 0x6900  
 
 なので、
 こうなる。
@@ -129,11 +129,11 @@ UTF16は基本16bitで一単位で以下のような対応となる。
 **⑤これをUTF8のファイルでひらくと…**
 
 16bit一単位ではなく、8bit一単位なので、二文字として解釈されてしまうため…
-
-「m」= 0x6D -> 0x6D00 -> 0x6D 0x00
-「o」= 0x6F -> 0x6F00 -> 0x6F 0x00
-「j」= 0x6A -> 0x6A00 -> 0x6A 0x00
-「i」= 0x69 -> 0x6900 -> 0x69 0x00
+  
+「m」= 0x6D -> 0x6D00 -> 0x6D 0x00  
+「o」= 0x6F -> 0x6F00 -> 0x6F 0x00  
+「j」= 0x6A -> 0x6A00 -> 0x6A 0x00  
+「i」= 0x69 -> 0x6900 -> 0x69 0x00  
 
 0x00　はUTF8ではNULLの制御文字らしい。
 
