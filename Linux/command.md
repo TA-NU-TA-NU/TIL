@@ -1,4 +1,4 @@
-Linuxでたたいたコマンドとかいろいろ
+# Linuxでたたいたコマンドとかいろいろ
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
@@ -11,7 +11,8 @@ Linuxでたたいたコマンドとかいろいろ
 
 <!-- /code_chunk_output -->
 
-# 1. yum (ヤム)
+## 1. yum (ヤム)
+
 CentOSなどのRedHat系のディストリビューションで利用される
 「パッケージ管理システム」で用いられるコマンド
 
@@ -33,15 +34,17 @@ sudoをつけて管理者権限で行わないと実行できないので実質�
 python3 install
 `yum -y install python3`
 
-# 2. apt (アプト)
+## 2. apt (アプト)
+
 UbuntuなどのDebian系ディストリビューションで利用される
 「パッケージ管理システム」で用いられるコマンド
 
-# 3. rpm
+## 3. rpm
+
 インストールにもちいるが
 rpmは指定されたものしかインストールしない
 
-# 4. pip (Pip Installs Packages (OR Python)) (ピップ)
+## 4. pip (Pip Installs Packages (OR Python)) (ピップ)
 
 pythonのパッケージ管理システム。
 インストールしたpythonの中に入っている。
@@ -53,7 +56,7 @@ PyPI(Python Package Index)(ぱいぱい)
 というらしい。
 
 パッケージのインストール
-`pip install [パッケージ名]` 
+`pip install [パッケージ名]`
 
 インストール済みパッケージ名/バージョン一覧
 `pip list`
