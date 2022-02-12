@@ -9,10 +9,11 @@
 # Pesterについて
 
 ## Pesterとは何か
+
 PowerShell向けのテストフレームワーク
 
-参考:[https://pester.dev/](https://pester.dev/) 
- 
+参考:[https://pester.dev/](https://pester.dev/)
+
 これのおかげでpowershellのテストコードを書いて単体テストをきっちりできるよ。
 
 今はv5が最新だと思われる。
@@ -28,6 +29,7 @@ PowerShell向けのテストフレームワーク
 `New-Fixture -Name XXX`でカレントディレクトリにテンプレ付きの上記セットができあがる。
 
 ## 基本の使い方
+
 大まかにはテスト対象を取得してくる部分とその下に続くテスト項目の部分とに分けられる。
 
 ### テスト対象を取得してくる
@@ -54,6 +56,7 @@ Describe
 　└It
 
 こんな感じで
+
 ```console
 Describe "XXXFunctionTest"{
     Context "正常系" {
@@ -86,15 +89,16 @@ Describe "XXXFunctionTest"{
 又、それぞれBefore・After処理を行って前処理や後処理をIt実行ごととかテスト開始時とかに行える。
 
 ## テストの実施
+
 テストスクリプトがあるディレクトリで`Invoke-Pester`を実行
 `-Output Detailed`を詳しく見れる。
 
 ## 実際に使ってみた
 
-
 - test1
   
 **code**
+
 ```console
 class uwakuByeByeController{
    # 静的プロパティ
@@ -136,6 +140,7 @@ class uwakuByeByeController{
 ```
 
 **test code**
+
 ```console
 BeforeAll {
     . $PSCommandPath.Replace('test\uwakuByeByeController\uwakuByeByeController.Tests.ps1', 'uwakuByeByeController.ps1') 
@@ -195,6 +200,7 @@ Describe "uwakuByeByeController Make Instance Test" {
 - test2
   
 **code**
+
 ```console
 class secValidationChk{
    [int] $secNum
@@ -221,6 +227,7 @@ class secValidationChk{
 ```
 
 **test code**
+
 ```console
 BeforeAll {
     . $PSCommandPath.Replace('test\secValidationChk\secValidationChk.Tests.ps1', 'secValidationChk.ps1') 

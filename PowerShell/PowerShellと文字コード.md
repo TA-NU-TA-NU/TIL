@@ -23,6 +23,7 @@ UTF8だと思ってたらUTF16LEだったりとなかなかこれが把握して
 でも文字コードの深いところは深淵すぎて限度があった…
 
 ## 1.2. 知らなかったはまりポイント
+
 ### 1.2.1. PowerShellの内部のデフォ出力はUTF16LE
 
 先ず、
@@ -51,7 +52,7 @@ UTF8だと思ってたらUTF16LEだったりとなかなかこれが把握して
 
 > moji  
 > m o j i  
- 
+
 これには
 UTF8と思ってたんで…
 
@@ -61,6 +62,7 @@ UTF8と思ってたんで…
 特に指定せずにリダイレクトするとUTF16LEとして送られる。
 
 ### 1.2.2. バイナリダンプの方法
+
 `[検証するもの] | Format-Hex`
 って感じで可能
 
@@ -103,13 +105,13 @@ ASCIIと同じコードは同じコードとなっている。
 ここが問題。
 
 > 出力をファイルに書き込むコマンドレットの場合:
-> 
+>
 > Out-File リダイレクト演算子と > を使用 >> して UTF-16LE を作成します。これは と とは特に異 Set-Content なります Add-Content 。
 > （中略）
 > 既存のファイルに追加するコマンドの場合:
-> 
+>
 > Out-File -Append リダイレクト演算子 >> は、既存のターゲット ファイルのコンテンツのエンコードとの一致を試みない。 代わりに、Encoding パラメーターを使用しない限り、既定 のエンコード が使用されます。 コンテンツを追加するときに、ファイルの元のエンコードを使用する必要があります。
-> 
+>
 > 原文ママ
 > 出典　about_Character_Encoding  
 > [https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-7.2](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-7.2)
@@ -140,6 +142,7 @@ UTF16は基本16bitで一単位で以下のような対応となる。
 これを開くと一見すると空白に見えるみたい…。
 
 ### 1.2.4. powershellv5での対処法
+
 `$OutputEncoding`をかえる。
 
 これは、WindowsPowerShell自動変数の一つで自動的に使用・設定されている。
@@ -157,5 +160,5 @@ powershellを開きなおしてしまうと元に戻る。
 プロファイルに入れて開く都度読み込ませるとかのひと工夫がいる。
 
 ### 1.2.5. PowerShell Core入れるのが良き
-PowerShell Core を入れてあげるとデフォがBOMなしUTF8で扱ってくれるので今回の様にUTF8想定のファイルには特に意識せずリダイレクトしても問題ない。
 
+PowerShell Core を入れてあげるとデフォがBOMなしUTF8で扱ってくれるので今回の様にUTF8想定のファイルには特に意識せずリダイレクトしても問題ない。

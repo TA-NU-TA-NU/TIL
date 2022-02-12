@@ -14,7 +14,7 @@
 # 1. dockerfile作成
 
 大まかな指針
-・手打ちでたたいたコマンドや操作をdockerfileに記述 
+・手打ちでたたいたコマンドや操作をdockerfileに記述
 ・buildして意図した結果が得られることを確認
 ・記述内容をさらにまとめる。
 
@@ -28,7 +28,7 @@
 
 pullしてきたイメージがdockerfileにおけるFROMになる。
 
-例）centosを取得してポート指定で起動 
+例）centosを取得してポート指定で起動
 
 `docker container run -it -d -p 9090:80 --name centos centos:latest`
 
@@ -47,6 +47,7 @@ pullしてきたイメージがdockerfileにおけるFROMになる。
 `container attach [コンテナ名]`
 
 ## 2.2. コマンドの実行 ⇔ dockerfile記述
+
 コンテナ内に入る
 `docker exec -it centos bash`
 
@@ -60,6 +61,7 @@ pullしてきたイメージがdockerfileにおけるFROMになる。
 RUN ～ のような命令文は極力ひとまとめにするとレイヤが減ってメモリの節約になる。
 
 例:
+
 ```docker
 RUN yum -y install python3 \
     nodejs npm \
@@ -73,4 +75,3 @@ RUN yum -y install python3 \
 可能な限りまとめていく。
 
 コマンドをまとめることでbuildの実効速度も改善する。
-
